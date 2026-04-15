@@ -12,7 +12,7 @@ public class PanelInvitacion extends JPanel {
         add(new JLabel("Nombre usuario"));
         add(new JTextField());
 
-        add(new JLabel("Celular"));
+        add(new JLabel("Numero de Celular"));
         add(new JTextField());
 
         add(new JButton("Guardar"));
