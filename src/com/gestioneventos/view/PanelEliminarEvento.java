@@ -12,7 +12,7 @@ public class PanelEliminarEvento extends JPanel {
 
         JButton eliminar = new JButton("Remove");
 
-        add(new JLabel("ID evento"));
+        add(new JLabel("Ingrese ID evento"));
         add(id);
         add(eliminar);
 

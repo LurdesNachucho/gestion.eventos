@@ -9,7 +9,7 @@ public class PanelInvitacion extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        add(new JLabel("Nombre"));
+        add(new JLabel("Nombre usuario"));
         add(new JTextField());
 
         add(new JLabel("Celular"));
@@ -17,4 +17,4 @@ public class PanelInvitacion extends JPanel {
 
         add(new JButton("Guardar"));
     }
-}
+    }
