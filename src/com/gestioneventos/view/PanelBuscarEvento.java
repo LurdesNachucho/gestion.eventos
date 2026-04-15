@@ -12,7 +12,7 @@ public class PanelBuscarEvento extends JPanel {
         JTextField id = new JTextField();
         JButton buscar = new JButton("Buscar");
 
-        add(new JLabel("ID"));
+        add(new JLabel("ID del evento"));
         add(id);
         add(buscar);
 
