@@ -1,9 +1,17 @@
 package com.gestioneventos;
 
-import com.gestioneventos.view.MainView;
+import core.Controller;
+import controllers.HomeController;
 
-public class Main {
-    public static void main(String[] args) {
-        new MainView();
+
+/**
+ * Main class. Responsible for running the application.
+ */
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Controller c = new HomeController();
+        c.run();
     }
 }
