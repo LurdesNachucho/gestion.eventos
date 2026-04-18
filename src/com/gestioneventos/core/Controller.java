@@ -1,4 +1,4 @@
-package core;
+package com.gestioneventos.core;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -108,4 +108,3 @@ public abstract class Controller
         return mainFrameComponents.get(name);
     }
 }
-

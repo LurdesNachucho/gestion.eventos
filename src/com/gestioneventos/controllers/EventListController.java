@@ -1,12 +1,12 @@
-package controllers;
+package com.gestioneventos.controllers;
 
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import core.Controller;
-import models.SchedulerIO;
-import views.EventListView;
+import com.gestioneventos.core.Controller;
+import com.gestioneventos.models.SchedulerIO;
+import com.gestioneventos.views.EventListView;
 
 
 /**
@@ -38,6 +38,7 @@ public class EventListController extends Controller
      */
     public void addNewRow(Object[] values)
     {
+
         ((DefaultTableModel) table.getModel()).addRow(values);
     }
 
@@ -89,5 +90,15 @@ public class EventListController extends Controller
         } catch (Exception ex) { }
 
         return dataColumns;
+    }
+
+    public void reloadTable()
+    {
+        try {
+            SchedulerIO schedulerIO = new SchedulerIO();
+            schedulerIO.attach(eventListView);
+            ((DefaultTableModel) table.getModel())
+                    .setDataVector(schedulerIO.getEvents(), getNameColumns());
+        } catch (Exception ex) { }
     }
 }

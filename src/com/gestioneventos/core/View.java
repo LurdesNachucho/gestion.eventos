@@ -1,4 +1,4 @@
-package core;
+package com.gestioneventos.core;
 
 
 /**
@@ -12,5 +12,5 @@ public interface View
      * @param model Model that triggered the update
      * @param data Data sent by this model
      */
-    public void update(core.Model model, Object data);
+    public void update(Model model, Object data);
 }

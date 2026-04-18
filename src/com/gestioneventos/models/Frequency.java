@@ -1,4 +1,4 @@
-package models;
+package com.gestioneventos.models;
 
 
 public enum Frequency

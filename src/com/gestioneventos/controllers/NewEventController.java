@@ -1,12 +1,14 @@
-package controllers;
+package com.gestioneventos.controllers;
 
 import javax.swing.JOptionPane;
 
-import core.Controller;
-import models.SchedulerEvent;
-import models.SchedulerIO;
-import views.EventListView;
-import views.NewEventView;
+import com.gestioneventos.core.Controller;
+import com.gestioneventos.models.SchedulerEvent;
+import com.gestioneventos.models.SchedulerIO;
+import com.gestioneventos.views.EventListView;
+import com.gestioneventos.views.NewEventView;
+
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -19,6 +21,7 @@ public class NewEventController extends Controller
     //-----------------------------------------------------------------------
     private NewEventView newEventView;
     private EventListController eventListController;
+    private RemoveEventController removeEventController;
 
 
     //-----------------------------------------------------------------------
@@ -30,9 +33,10 @@ public class NewEventController extends Controller
      * @param eventListController {@link EventListController}, because it will
      * add new events created in {@link NewEventView}.
      */
-    public NewEventController(EventListController eventListController)
+    public NewEventController(EventListController eventListController,RemoveEventController removeEventController)
     {
         this.eventListController = eventListController;
+        this.removeEventController = removeEventController;
 
     }
 
@@ -53,12 +57,22 @@ public class NewEventController extends Controller
      */
     public void addEvent(SchedulerEvent event)
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Object[] metadata = new Object[5];
-        metadata[0] = event.getDate();
+        metadata[0] = sdf.format(event.getDate());
         metadata[1] = event.getEventDesc();
         metadata[2] = event.getFrequency();
         metadata[3] = event.getFwdEmail();
         metadata[4] = event.getAlarm() ? "ON" : "OFF";
+
+        Object[] metadataRemove = new Object[6];
+        metadataRemove[0] = sdf.format(event.getDate());
+        metadataRemove[1] = event.getEventDesc();
+        metadataRemove[2] = event.getFrequency();
+        metadataRemove[3] = event.getFwdEmail();
+        metadataRemove[4] = event.getAlarm() ? "ON" : "OFF";
+        metadataRemove[5] = false;
+
 
         try {
             SchedulerIO schedulerIO = new SchedulerIO();
@@ -70,6 +84,7 @@ public class NewEventController extends Controller
 
 
         eventListController.addNewRow(metadata);
+        removeEventController.addNewRow(metadataRemove);
     }
 
 

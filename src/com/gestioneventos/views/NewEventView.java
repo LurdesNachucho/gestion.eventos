@@ -1,4 +1,4 @@
-package views;
+package com.gestioneventos.views;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,12 +16,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import controllers.NewEventController;
-import core.Model;
-import core.View;
-import models.Frequency;
-import models.SchedulerEvent;
-import models.SchedulerUtil;
+import com.gestioneventos.controllers.NewEventController;
+import com.gestioneventos.core.Model;
+import com.gestioneventos.core.View;
+import com.gestioneventos.models.Frequency;
+import com.gestioneventos.models.SchedulerEvent;
+import com.gestioneventos.models.SchedulerUtil;
 
 
 /**

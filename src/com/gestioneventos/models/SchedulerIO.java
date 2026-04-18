@@ -1,4 +1,4 @@
-package models;
+package com.gestioneventos.models;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import core.Model;
-import core.View;
+import com.gestioneventos.core.Model;
+import com.gestioneventos.core.View;
 
 
 /**
@@ -52,12 +52,12 @@ public class SchedulerIO implements Model
     }
 
     /**
-     * Saves a {@link models.SchedulerEvent} in disk in {@link #DIRECTORY}.{@link #FILE}.
+     * Saves a {@link SchedulerEvent} in disk in {@link #DIRECTORY}.{@link #FILE}.
      *
-     * @param event {@link models.SchedulerEvent Event} to be saved
+     * @param event {@link SchedulerEvent Event} to be saved
      * @throws Exception If it can't save the event
      */
-    public void saveEvent(models.SchedulerEvent event) throws Exception
+    public void saveEvent(SchedulerEvent event) throws Exception
     {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(new File(DIRECTORY, FILE), true));
@@ -74,7 +74,7 @@ public class SchedulerIO implements Model
     }
 
     /**
-     * Reads a {@link models.SchedulerEvent} saved in disk with name {@link #FILE}.
+     * Reads a {@link SchedulerEvent} saved in disk with name {@link #FILE}.
      * @return List of lists (matrix) of the events
      * @throws Exception If it can't read event file
      */
@@ -111,4 +111,24 @@ public class SchedulerIO implements Model
 
         return response;
     }
+
+    public void removeEvents(List<Integer> remainingIndexes) throws Exception
+    {
+        Vector<Vector<Object>> allEvents = getEvents();
+
+        new FileWriter(new File(DIRECTORY, FILE), false).close();
+
+        for (int index : remainingIndexes) {
+            Vector<Object> event = allEvents.get(index);
+            SchedulerEvent schedulerEvent = new SchedulerEvent();
+            schedulerEvent.setDate(SchedulerUtil.getDateFromString(event.get(0).toString()));
+            schedulerEvent.setEventDesc(event.get(1).toString());
+            schedulerEvent.setFrequency((Frequency) event.get(2));
+            schedulerEvent.setFwdEmail(event.get(3).toString());
+            schedulerEvent.setAlarm(event.get(4).equals("ON"));
+
+            saveEvent(schedulerEvent);
+        }
+    }
+
 }

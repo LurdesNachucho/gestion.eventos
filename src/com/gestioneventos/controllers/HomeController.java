@@ -1,9 +1,7 @@
-package controllers;
+package com.gestioneventos.controllers;
 
-import core.Controller;
-import views.EventListView;
-import views.HomeView;
-import views.NewEventView;
+import com.gestioneventos.core.Controller;
+import com.gestioneventos.views.*;
 
 
 /**
@@ -16,7 +14,10 @@ public class HomeController extends Controller
     //-----------------------------------------------------------------------
     private HomeView homeView;
     private EventListController eventListController = new EventListController();
-    private controllers.NewEventController newEventController = new controllers.NewEventController(eventListController);
+    private RemoveEventController removeEventController = new RemoveEventController(eventListController);
+    private NewEventController newEventController = new NewEventController(eventListController,removeEventController);
+    private GuestListController guestListController = new GuestListController();
+    private NewGuestController newGuestController = new NewGuestController(guestListController);
 
 
     //-----------------------------------------------------------------------
@@ -28,6 +29,10 @@ public class HomeController extends Controller
         // Initializes others controllers
         eventListController.run();
         newEventController.run();
+        removeEventController.run();
+        newGuestController.run();
+        guestListController.run();
+
 
         // Initializes HomeView
         homeView = new HomeView(this, mainFrame);
@@ -49,5 +54,20 @@ public class HomeController extends Controller
     public NewEventView getNewEventView()
     {
         return newEventController.getView();
+    }
+
+    public RemoveEventView getRemoveEventView()
+    {
+        return removeEventController.getView();
+    }
+
+    public RegisterGuestView getRegisterGuestView()
+    {
+        return newGuestController.getView();
+    }
+
+    public GuestListView getGuestListView()
+    {
+        return guestListController.getView();
     }
 }

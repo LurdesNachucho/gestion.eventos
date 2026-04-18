@@ -1,7 +1,7 @@
 package com.gestioneventos;
 
-import core.Controller;
-import controllers.HomeController;
+import com.gestioneventos.core.Controller;
+import com.gestioneventos.controllers.HomeController;
 
 
 /**

@@ -1,4 +1,4 @@
-package views;
+package com.gestioneventos.views;
 
 import java.awt.BorderLayout;
 
@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import controllers.EventListController;
-import core.Model;
-import core.View;
+import com.gestioneventos.controllers.EventListController;
+import com.gestioneventos.core.Model;
+import com.gestioneventos.core.View;
 
 
 /**
@@ -31,7 +31,7 @@ public class EventListView extends JPanel implements View
     /**
      * It will show the list of saved events.
      *
-     * @param eventListController Controller responsible for this view
+     * @param eventListController Controller responsible for this views
      * @param table Table with saved events
      */
     public EventListView(EventListController eventListController, JTable table)
@@ -56,7 +56,7 @@ public class EventListView extends JPanel implements View
     }
 
     /**
-     * Creates view's frame.
+     * Creates views's frame.
      */
     private void make_frame()
     {

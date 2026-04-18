@@ -1,4 +1,4 @@
-package views;
+package com.gestioneventos.views;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-import controllers.HomeController;
-import core.Model;
-import core.View;
+import com.gestioneventos.controllers.HomeController;
+import com.gestioneventos.core.Model;
+import com.gestioneventos.core.View;
 
 
 /**
@@ -25,7 +25,7 @@ public class HomeView extends JPanel implements View
     @SuppressWarnings("unused")
     private HomeController homeController;
     private JFrame mainFrame;
-    private final static int MAIN_FRAME_WIDTH = 500;
+    private final static int MAIN_FRAME_WIDTH = 550;
     private final static int MAIN_FRAME_HEIGHT = 350;
     private final static int MAIN_FRAME_X = 100;
     private final static int MAIN_FRAME_Y = 100;
@@ -80,7 +80,10 @@ public class HomeView extends JPanel implements View
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.addTab("New event", homeController.getNewEventView());
         tabbedPane.addTab("Events", homeController.getEventListView());
-
+        tabbedPane.addTab("Remove Events", homeController.getRemoveEventView());
+        tabbedPane.addTab("Registrar invitado", homeController.getRegisterGuestView());
+        tabbedPane.addTab("Invitados", homeController.getGuestListView());
+        //tabbedPane.addTab("Buscar evento", null);
         add(tabbedPane, BorderLayout.CENTER);
     }
 }
